@@ -1,0 +1,71 @@
+***  Installation Started 01/03/2022 7:49  ***
+Title: Scripts for iTunes Installation
+Source: C:\Users\Mimsical\AppData\Local\Temp\scoped_dir2548_1846954167\setup.exe
+Made Dir: C:\Program Files (x86)\iTunes
+Made Dir: C:\Program Files (x86)\iTunes\Scripts
+File Copy: C:\Program Files (x86)\iTunes\Scripts\UNWISE.EXE
+RegDB Key: Software\Microsoft\Windows\CurrentVersion\Uninstall\Scripts for iTunes
+RegDB Val: Scripts for iTunes
+RegDB Name: DisplayName
+RegDB Root: 2
+RegDB Key: Software\Microsoft\Windows\CurrentVersion\Uninstall\Scripts for iTunes
+RegDB Val: "C:\Program Files (x86)\iTunes\Scripts\UNWISE.EXE" C:\PROGRA~2\iTunes\Scripts\INSTALL.LOG
+RegDB Name: UninstallString
+RegDB Root: 2
+RegDB Key: Software\Microsoft\Windows\CurrentVersion\Uninstall\Scripts for iTunes
+RegDB Val: Please send support requests to support@maximized.com
+RegDB Name: Comments
+RegDB Root: 2
+RegDB Key: Software\Microsoft\Windows\CurrentVersion\Uninstall\Scripts for iTunes
+RegDB Val: Technical support
+RegDB Name: Contact
+RegDB Root: 2
+RegDB Key: Software\Microsoft\Windows\CurrentVersion\Uninstall\Scripts for iTunes
+RegDB Val: 2004-12-09-1
+RegDB Name: DisplayVersion
+RegDB Root: 2
+RegDB Key: Software\Microsoft\Windows\CurrentVersion\Uninstall\Scripts for iTunes
+RegDB Val: http://www.maximized.com/freeware/ScriptsForiTunes/
+RegDB Name: HelpLink
+RegDB Root: 2
+RegDB Key: Software\Microsoft\Windows\CurrentVersion\Uninstall\Scripts for iTunes
+RegDB Val: 
+RegDB Name: HelpTelephone
+RegDB Root: 2
+RegDB Key: Software\Microsoft\Windows\CurrentVersion\Uninstall\Scripts for iTunes
+RegDB Val: Maximized Software
+RegDB Name: Publisher
+RegDB Root: 2
+RegDB Key: Software\Microsoft\Windows\CurrentVersion\Uninstall\Scripts for iTunes
+RegDB Val: http://www.maximized.com
+RegDB Name: URLInfoAbout
+RegDB Root: 2
+RegDB Key: Software\Microsoft\Windows\CurrentVersion\Uninstall\Scripts for iTunes
+RegDB Val: http://www.maximized.com/freeware/ScriptsForiTunes/
+RegDB Name: URLUpdateInfo
+RegDB Root: 2
+File Copy: C:\Program Files (x86)\iTunes\Scripts\BackTrack.vbs
+File Copy: C:\Program Files (x86)\iTunes\Scripts\FastForward.vbs
+File Copy: C:\Program Files (x86)\iTunes\Scripts\GetPlayState.vbs
+File Copy: C:\Program Files (x86)\iTunes\Scripts\Mute.vbs
+File Copy: C:\Program Files (x86)\iTunes\Scripts\Next.vbs
+File Copy: C:\Program Files (x86)\iTunes\Scripts\Pause.vbs
+File Copy: C:\Program Files (x86)\iTunes\Scripts\Play.vbs
+File Copy: C:\Program Files (x86)\iTunes\Scripts\PlayFile.vbs
+File Copy: C:\Program Files (x86)\iTunes\Scripts\PlayPause.vbs
+File Copy: C:\Program Files (x86)\iTunes\Scripts\PlayPlaylist.vbs
+File Copy: C:\Program Files (x86)\iTunes\Scripts\PlaySong.vbs
+File Copy: C:\Program Files (x86)\iTunes\Scripts\Previous.vbs
+File Copy: C:\Program Files (x86)\iTunes\Scripts\Rewind.vbs
+File Copy: C:\Program Files (x86)\iTunes\Scripts\ScriptEngineCache-Start.vbs
+File Copy: C:\Program Files (x86)\iTunes\Scripts\ScriptEngineCache-Stop.vbs
+File Copy: C:\Program Files (x86)\iTunes\Scripts\SetVolume.vbs
+File Copy: C:\Program Files (x86)\iTunes\Scripts\Stop.vbs
+File Copy: C:\Program Files (x86)\iTunes\Scripts\VolumeDown.vbs
+File Copy: C:\Program Files (x86)\iTunes\Scripts\VolumeUp.vbs
+File Copy: C:\Program Files (x86)\iTunes\Scripts\Scripts for iTunes documentation.htm
+File Copy: C:\Program Files (x86)\iTunes\Scripts\Scripts for iTunes web site.url
+Made Dir: C:\Users\Mimsical\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\iTunes
+Shell Link: C:\Users\Mimsical\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\iTunes\Scripts for iTunes documentation.lnk
+Shell Link: C:\Users\Mimsical\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\iTunes\Scripts for iTunes web site.lnk
+User Rights: Admin
