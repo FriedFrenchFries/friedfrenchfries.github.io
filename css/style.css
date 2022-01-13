@@ -572,12 +572,24 @@ h1.arrow span {
     color: #E04343;
 }
 /* ==========================================================================About========================================================================== */
-.about-image {
+.fraz-image {
 	height:400px;
 	-webkit-background-size:cover;
 	-moz-background-size:cover;
 	-o-background-size:cover;
-	background-size:cover;
+	background-size:auto;
+	background-repeat: no-repeat;
+	background-position:center;
+}
+
+.giga-image {
+	height:400px;
+	-webkit-background-size:cover;
+	-moz-background-size:cover;
+	-o-background-size:cover;
+	background-size:auto;
+	background-repeat: no-repeat;
+	background-position:center;
 }
 .color-bg {
 	background: #E04343;
@@ -616,16 +628,16 @@ h1.arrow span {
     color: #FFF;
 }
 /* ==========================================================================Services========================================================================== */
+
 .services {
 	margin-top:80px;
 	margin-bottom:40px;
 }
 .services img {
 	display: block;
-  	margin-left: auto;
-  	margin-right: auto;
+	border-radius: 150%;
+	width: 100%;
 	
-	width: 200px;
   }
 .services .icon {
 	position:relative;
@@ -644,10 +656,7 @@ h1.arrow span {
 	border: 1px solid #E04343;
 	color: #E04343;
 }
-.services .item:hover .icon {
-	background: #E04343;
-	border: 1px solid #E04343;
-}
+
 .services .item [class*=fa] {
 	-webkit-transition:all .3s ease-out;
 	transition:all .3s ease-out;
@@ -755,11 +764,17 @@ img.grayscale:hover {
 	padding-left:15px;
 }
 .effects .img {
-	position:relative;
-	position:relative;
+	height:400px;
+	-webkit-background-size:cover;
+	-moz-background-size:cover;
+	-o-background-size:cover;
+	background-size:auto;
+	background-repeat: no-repeat;
+	background-position:center;
 	z-index:1;
 	overflow:hidden;
 }
+
 .effects .img:nth-child(n) {
 	margin-right:5px;
 }
