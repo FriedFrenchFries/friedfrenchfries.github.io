@@ -454,7 +454,8 @@ table {
 /* ==========================================================================Hero========================================================================== */
 .hero {
 	background: url('../img/twitch.png') right bottom no-repeat;
-	background-size: contain;
+	background-size: 25%;
+	background-position: right center;
 	padding:0px 0 px 0;
 	height:auto;
 	background-color: #FBFBFB;
@@ -619,6 +620,13 @@ h1.arrow span {
 	margin-top:80px;
 	margin-bottom:40px;
 }
+.services img {
+	display: block;
+  	margin-left: auto;
+  	margin-right: auto;
+	
+	width: 200px;
+  }
 .services .icon {
 	position:relative;
 	width:175px;
