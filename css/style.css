@@ -79,7 +79,6 @@ audio,canvas,video {
 	*display:inline;
 	*zoom: 1;
 }
-* Remove excess height in iOS 5 devices. */
 audio:not([controls]) {
 	display:none;
 	height: 0px;
@@ -454,7 +453,7 @@ table {
 /* ==========================================================================Hero========================================================================== */
 .hero  {
 	background: url('  /img/twitch.png') right bottom no-repeat;
-	background-size:50%;
+	background-size:45%;
 	background-position: right center;
 	padding:0px 0 px 0;
 	height:auto;
@@ -746,7 +745,7 @@ img.grayscale {
 	/* Firefox 3.5+,IE10 */ filter:gray;
 	/* IE6-9 */ -webkit-filter:grayscale(100%);
 	/* Chrome 19+& Safari 6+*/ -webkit-transition:all .6s ease;
-	/* Fade to color for Chrome and Safari */ -webkit-backface-visibility:hidden;
+	/* Fade to color for Chrome and Safari */ -webkit-backface-visibility: hidden;
 	/* Fix for transition flickering */
 }
 img.grayscale:hover {
