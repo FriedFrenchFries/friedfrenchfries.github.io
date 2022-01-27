@@ -1,1 +1,1 @@
-worker: node index.html
+$ echo "web: node app.js" > Procfile
