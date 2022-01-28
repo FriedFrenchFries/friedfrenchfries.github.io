@@ -36,11 +36,10 @@ async function main() {
         await client.close();
     }
 }
-    //
 
 
 
-
+const port = process.env.PORT || 3000;
 
 // sendFile will go here
 app.get('/', function(req, res) {
