@@ -1,6 +1,7 @@
 console.log('Server-side code running');
 
 const express = require('express');
+const path = require('path');
 const {MongoClient} = require('mongodb');
 
 const app = express();
@@ -35,17 +36,19 @@ async function main() {
         await client.close();
     }
 }
-
-  // start the express web server listening on 8080
-  app.listen(8080, () => {
-    console.log('listening on 8080');
-  });
+    //
 
 
-// serve the homepage
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
+
+
+
+// sendFile will go here
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname, '/index.html'));
 });
+
+app.listen(port);
+console.log('Server started at http://localhost:' + port);
 
 main().catch(console.error);
 
