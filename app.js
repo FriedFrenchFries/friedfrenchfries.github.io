@@ -14,7 +14,7 @@ let db;
 // Replace the URL below with the URL for your database
 const url =  process.env.mongo;
 
-MongoClient.connect(url, (err, database) => {
+MongoClient.connect(url, { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false},(err, database) => {
   if(err) {
     return console.log(err);
   }
