@@ -49,29 +49,7 @@ app.listen(port);
 console.log("Server started at http://localhost:" + port);
 
 main().catch(console.error);
-
-/**
- * Print the names of all available databases
- * @param {MongoClient} client A MongoClient that is connected to a cluster
- */
-
-let keydoc = await keymodel.findOne({
-  fillerfind: 0
-});
-
-
-if(!keydoc) {
-  console.log("Making new keymodel")
-  keydoc = new keymodel({
-    fillerfind:0,
-    validkeys: [
-      "rrtr334"
-    ]
-  })
-}
-
-await keydoc.save()
-
+await getKeys()
 async function getKeys() {
     let keydoc = await keymodel.findOne({
         fillerfind: 0
