@@ -14,7 +14,7 @@ let db;
 // Replace the URL below with the URL for your database
 const url =  process.env.mongo;
 
-MongoClient.connect(url, { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false},(err, database) => {
+MongoClient.connect(url, { useUnifiedTopology: true, useNewUrlParser: true},(err, database) => {
   if(err) {
     return console.log(err);
   }
@@ -31,12 +31,12 @@ app.get('/', (req, res) => {
 });
 
 // add a document to the DB collection recording the click event
-app.post('/clicked', (req, res) => {
+app.post('/test', (req, res) => {
   const click = {clickTime: new Date()};
   console.log(click);
   console.log(db);
 
-  db.collection('clicks').save(click, (err, result) => {
+  db.collection('test').save(test, (err, result) => {
     if (err) {
       return console.log(err);
     }
@@ -46,8 +46,8 @@ app.post('/clicked', (req, res) => {
 });
 
 // get the click data from the database
-app.get('/clicks', (req, res) => {
-  db.collection('clicks').find().toArray((err, result) => {
+app.get('/test', (req, res) => {
+  db.collection('test').find().toArray((err, result) => {
     if (err) return console.log(err);
     res.send(result);
   });
