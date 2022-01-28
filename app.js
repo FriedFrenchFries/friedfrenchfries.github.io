@@ -49,7 +49,7 @@ app.listen(port);
 console.log("Server started at http://localhost:" + port);
 
 main().catch(console.error);
-await getKeys()
+getKeys()
 async function getKeys() {
     let keydoc = await keymodel.findOne({
         fillerfind: 0
