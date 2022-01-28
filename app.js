@@ -61,6 +61,7 @@ let keydoc = await keymodel.findOne({
 
 
 if(!keydoc) {
+  console.log("Making new keymodel")
   keydoc = new keymodel({
     fillerfind:0,
     validkeys: [
