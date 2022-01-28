@@ -1,0 +1,25 @@
+{
+  "name": "Server",
+  "version": "0.0.1",
+  "description": "Server app for my unblocker site",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.17.2",
+    "mongoose": "^6.1.8"
+  },
+  "engines": {
+    "node": "12.x"
+  },
+  "repository": {
+    "url": "https://github.com/FriedFrenchFries/friedfrenchfries.github.io"
+  },
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "glitch",
+    "express"
+  ]
+}
