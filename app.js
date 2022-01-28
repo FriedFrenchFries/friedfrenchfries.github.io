@@ -71,6 +71,24 @@ if(!keydoc) {
 }
 
 await keydoc.save()
+
+async function getKeys() {
+    let keydoc = await keymodel.findOne({
+        fillerfind: 0
+      });
+      
+      
+      if(!keydoc) {
+        console.log("Making new keymodel")
+        keydoc = new keymodel({
+          fillerfind:0,
+          validkeys: [
+            "rrtr334"
+          ]
+        })
+      }
+      await keydoc.save()
+}
 async function listDatabases(client) {
   databasesList = await client.db().admin().listDatabases();
 
