@@ -3,7 +3,7 @@ console.log("Server-side code running");
 const express = require("express");
 const path = require("path");
 const { MongoClient } = require("mongodb");
-const keymodel = require("../models/key.js");
+const keymodel = require("./models/key.js");
 
 const app = express();
 
