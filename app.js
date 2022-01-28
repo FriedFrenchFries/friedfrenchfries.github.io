@@ -40,7 +40,7 @@ async function main() {
   app.listen(8080, () => {
     console.log('listening on 8080');
   });
-});
+
 
 // serve the homepage
 app.get('/', (req, res) => {
