@@ -131,12 +131,12 @@
             <input type="submit" class="staticrypt-decrypt-button" value="Login"/>
         </form>
     </div>
-
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js" integrity="sha384-lp4k1VRKPU9eBnPePjnJ9M2RF3i7PC30gXs70+elCVfgwLwx1tv5+ctxdtwxqZa7" crossorigin="anonymous"></script>
 
 <script>
+    console.log("Begin")
 
 
     /**
@@ -172,9 +172,11 @@
             encryptedHTML = encryptedMsg.substring(64),
             decryptedHMAC = CryptoJS.HmacSHA256(encryptedHTML, CryptoJS.SHA256(passphrase).toString()).toString();
 
-            alert(encryptedHTML)
+            console.log(encryptedMsg)
+
         if (decryptedHMAC !== encryptedHMAC) {
-            document.write(encryptedHTML)
+
+            alert("Incorrect Passphrase")
             return;
         }
 
