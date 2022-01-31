@@ -4,4 +4,4 @@ const Keys = Schema({
     validkeys: Array,
 })
 
-module.exports = model("Valid Keys", Key)
+module.exports = model("Valid Keys", Keys)
