@@ -100,7 +100,7 @@
 <div class="staticrypt-page">
     <div class="staticrypt-form">
         <div class="staticrypt-instructions">
-            <p class="staticrypt-title">Site temporarily down.  Proxy issues</p>
+            <p class="staticrypt-title">Protected Page</p>
             <p></p>
         </div>
 
@@ -118,3 +118,43 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js" integrity="sha384-lp4k1VRKPU9eBnPePjnJ9M2RF3i7PC30gXs70+elCVfgwLwx1tv5+ctxdtwxqZa7" crossorigin="anonymous"></script>
 <script>
     console.log("Begin")
+    /**
+     * Decrypt a salted msg using a password.
+     * Inspired by https://github.com/adonespitogo
+     */
+    var keySize = 256;
+    var iterations = 1000;
+    function decrypt (encryptedMsg, pass) {
+        var salt = CryptoJS.enc.Hex.parse(encryptedMsg.substr(0, 32));
+        var iv = CryptoJS.enc.Hex.parse(encryptedMsg.substr(32, 32))
+        var encrypted = encryptedMsg.substring(64);
+        var key = CryptoJS.PBKDF2(pass, salt, {
+            keySize: keySize/32,
+            iterations: iterations
+        });
+        var decrypted = CryptoJS.AES.decrypt(encrypted, key, {
+            iv: iv,
+            padding: CryptoJS.pad.Pkcs7,
+            mode: CryptoJS.mode.CBC
+        }).toString(CryptoJS.enc.Utf8);
+        return decrypted;
+    }
+    document.getElementById('staticrypt-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var passphrase = document.getElementById('staticrypt-password').value,
+            encryptedMsg = '58dc5662038c8f225f377eea36f0897abe18941326e991002f610b861d4c442a3beb233daf391eddc60616429be0ad076e83677d6b3564672bc5e6e55151dc5dtLljcFltN6RTfvBawz2F27ZXYsT+8LL3DreA7cgG6VXonIwuNOLH8Uf/UDQxFfavObixGaUsH8Gora4bmvspxm1aSoSB6PvKQshBRxAG0HKgWrPg1F2miv0fW4fDrAmzmP6Up7NvzdfmgaVtFxLBFbWPSFm8TGKrDMPlm5dGx9UPyNqe+cWh48RMCg5ZdR0uGhaM7woThot6JV+yPxWNPWSYVUShl4htgeYphly6HqYkXYub+OQ1eU8DrMJnvpoOCJjaLoZ9FrlYzCpw68t3+x8NqkbH2SImgd3A0w/NudFBYMX7VAUQTbvhGh6AseH7lYFqWey1SeNCGVyEvjkggjJknqWxaAvhWEqG6XNL6h1Ar/qYQpL3OMAKYSs8sgI4eB6FrS4jIuGKM1hjKW/a+GDDNopv2Bn2ulel0fCctGieGVNLZonSuIs3rRuyo1HvA4sSl2blVu9ZaLjI7nISU4zLs/HJ51XD0Tpvh4lPFkUzj8xBlsOBqaQKj+iuYo35MfurK5sxU/BVQXoHk7rqaNAl45IqgMXf84B7c8SRc4OKXjOsmJpSWsNb8eMEpFn49UHIHjLJl6iiUrkJbizrmLjM/2W1OfmDwnsTxXq2JwpoV5pV/TVHpEBHn4L3myp+hNelOKKhoFXeV5ZEhOAaYArUKKRhGPqdInE3ohv3FECIoHWBvJwlDJvgAaQDQVZIn0vyuBmnqgiu29cA86se3mrmDmH4cFZI/AwqUmeORfdYbEfBa9047W2C4o1B4rxbu8EV50rhLwhHpRpKSuzmlx8FZD+98RfrgROx/xd4EM6PPGNge/G7c/Wx1H0xlOn0d0srhhEmQKSHFGfbra0CiDw6iWlOUihMLyeQdcqD0w7mxuhqlnT9nu9jah2kwsOAYJgjYoBerD+81tkMn2Fc7Bglb7OxE3LV8kdKU3Bh2oj+VnIv3qGljfpzcKvfMYSGjFPcIiGde7qXeB0RKGwVv8sxXtV3MRKUVvpY00ywfYKq4i7ZfhVcDdAPC3bYo0bfEOkCgKiPcaicpCh6eRg0RA==',
+            encryptedHMAC = encryptedMsg.substring(0, 64),
+            encryptedHTML = encryptedMsg.substring(64),
+            decryptedHMAC = CryptoJS.HmacSHA256(encryptedHTML, CryptoJS.SHA256(passphrase).toString()).toString();
+            console.log(encryptedMsg)
+        if (decryptedHMAC !== encryptedHMAC) {
+            alert("Incorrect Passphrase")
+            return;
+        }
+        var plainHTML = decrypt(encryptedHTML, passphrase);
+        document.write(plainHTML);
+        document.close();
+    });
+</script>
+</body>
+</html>
