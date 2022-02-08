@@ -10,7 +10,7 @@ const ssl = {
     key: fs.readFileSync(path.join(__dirname, '/ssl.key')),
     cert: fs.readFileSync(path.join(__dirname, '/ssl.cert')),
 };
-const server = https.createServer(ssl);
+const server = https.createServer();
 const proxy = new Corrosion({
     codec: 'xor', // apply basic xor encryption to url parameters in an effort to evade filters. Optional.
     prefix: '/get/' // specify the endpoint (prefix). Optional.
