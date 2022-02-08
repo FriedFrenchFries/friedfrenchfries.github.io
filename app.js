@@ -1,62 +1,24 @@
-console.log("Server-side code running");
+console.log("Now Loading Site")
+// https here is necesary for some features to work, even if this is going to be behind an SSL-providing reverse proxy.
+const https = require('https');
+const fs = require('fs');
+const path = require('path');
+const Corrosion = require('corrosion');
 
-const express = require("express");
-const path = require("path");
-const mongoose = require("mongoose")
-const keymodel = require('./models/keys.js')
-
-const app = express();
-
-async function main() {
-    /**
-     * Connection URI. Update <username>, <password>, and <your-cluster-url> to reflect your cluster.
-     * See https://docs.mongodb.com/ecosystem/drivers/node/ for more details
-     */
-    const uri =
-        "mongodb+srv://mimsical:KpPiRUztUJSt6ty@cluster0.inbci.mongodb.net/test?retryWrites=true&w=majority";
-
-
-    try {
-        // Connect to the MongoDB cluster
-        await mongoose.connect(uri, { useUnifiedTopology: true, useNewUrlParser: true})
-
-
-        // Make the appropriate DB calls
-        await listDatabases();
-    } catch (e) {
-        console.error(e);
-    }
-}
-
-const port = process.env.PORT || 3000;
-
-// sendFile will go here
-app.get("/", function (req, res) {
-    res.sendFile(path.join(__dirname, "/index.html"));
+// you are free to use self-signed certificates here, if you plan to route through an SSL-providing reverse proxy.
+const ssl = {
+    key: fs.readFileSync(path.join(__dirname, '/ssl.key')),
+    cert: fs.readFileSync(path.join(__dirname, '/ssl.cert')),
+};
+const server = https.createServer(ssl);
+const proxy = new Corrosion({
+    codec: 'xor', // apply basic xor encryption to url parameters in an effort to evade filters. Optional.
+    prefix: '/get/' // specify the endpoint (prefix). Optional.
 });
 
-app.listen(port);
-console.log("Server started at http://localhost:" + port);
+proxy.bundleScripts();
 
-main().catch(console.error);
-getKeys()
-async function getKeys() {
-    let keydoc = await keymodel.findOne({
-        fillerfind: 0
-    });
-
-
-    if (!keydoc) {
-        console.log("Making new keymodel")
-        keydoc = new keymodel({
-            fillerfind: 0,
-            validkeys: [
-                "rrtr334"
-            ]
-        })
-    } 
-    await keydoc.save()
-}
-async function listDatabases() {
-    console.log("Databases:");
-}
+server.on('request', (request, response) => {
+    if (request.url.startsWith(proxy.prefix)) return proxy.request(request, response);
+    response.end(fs.readFileSync(__dirname + '/index.html', 'utf-8'));
+}).on('upgrade', (clientRequest, clientSocket, clientHead) => proxy.upgrade(clientRequest, clientSocket, clientHead)).listen(8443);
