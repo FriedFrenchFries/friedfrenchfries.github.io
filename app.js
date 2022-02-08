@@ -1,30 +1,18 @@
-console.log("Now Loading Site")
-// https here is necesary for some features to work, even if this is going to be behind an SSL-providing reverse proxy.
-const https = require('https');
-const fs = require('fs');
-const path = require('path');
-const Corrosion = require('corrosion');
+console.log("Server-side code running");
 
+ const express = require("express");
+ const path = require("path");
+ 
 
-// you are free to use self-signed certificates here, if you plan to route through an SSL-providing reverse proxy.
-const ssl = {
-    key: fs.readFileSync(path.join(__dirname, '/ssl.key')),
-    cert: fs.readFileSync(path.join(__dirname, '/ssl.cert')),
-};
-const server = https.createServer(ssl);
-const proxy = new Corrosion({
-    codec: 'xor', // apply basic xor encryption to url parameters in an effort to evade filters. Optional.
-    prefix: '/get/' // specify the endpoint (prefix). Optional.
-});
+ const app = express();
 
-proxy.bundleScripts();
+ 
+ const port = process.env.PORT || 3000;
 
-server.on('request', (request, response) => {
-    if (request.url.startsWith(proxy.prefix)) return proxy.request(request, response);
-    response.end(fs.readFileSync(__dirname + '/index.html', 'utf-8'));
-}).on('upgrade', (clientRequest, clientSocket, clientHead) => proxy.upgrade(clientRequest, clientSocket, clientHead)).listen(process.env.PORT);
+ // sendFile will go here
+ app.get("/", function (req, res) {
+   res.sendFile(path.join(__dirname, "/index.html"));
+     res.sendFile(path.join(__dirname, "/index.html"));
+ });
 
-
-
-
-
+ app.listen(port);
