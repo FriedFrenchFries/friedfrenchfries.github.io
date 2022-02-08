@@ -1,18 +1,17 @@
 console.log("Server-side code running");
 
- const express = require("express");
- const path = require("path");
- 
+const express = require("express");
+const path = require("path");
 
- const app = express();
 
- 
- const port = process.env.PORT || 3000;
+const app = express();
 
- // sendFile will go here
- app.get("/", function (req, res) {
-   res.sendFile(path.join(__dirname, "/index.html"));
-     res.sendFile(path.join(__dirname, "/index.html"));
- });
+const port = process.env.PORT || 3000;
 
- app.listen(port);
+// sendFile will go here
+app.get("/", function (req, res) {
+    res.sendFile(path.join(__dirname, "/index.html"));
+});
+
+app.listen(port);
+console.log("Server started at http://localhost:" + port);
